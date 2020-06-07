@@ -105,7 +105,6 @@ app.get('/api/logout', jsonParser, authenticateToken, (req, res) => {
     let querySelect = db.query(sqlSelect, (err, result) => {
         let token = result[0].access_token;
         if (token) {
-            // if (token === access_token) {
                 let query = db.query(sql, (err, userstate) => {
                     if (err) {
                         throw err;
@@ -113,10 +112,6 @@ app.get('/api/logout', jsonParser, authenticateToken, (req, res) => {
                     console.log(`User logout successful (${email}, ${state}, ${dateTime}) inserted in the table`);
                     res.send("logout successful");
                 });
-            // } else {
-            //     console.log('Login First');
-            //     res.status(404).send("Login First");
-            // }
         } else {
             console.log('Login First');
             res.status(404).send('Login First');
