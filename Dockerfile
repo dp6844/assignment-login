@@ -1,7 +1,7 @@
-FROM node:7
+FROM node:12
 WORKDIR /app
 COPY package.json /app
 RUN npm install
 COPY . /app
 CMD node login.js
-EXPOSE 3000
+EXPOSE 3001
